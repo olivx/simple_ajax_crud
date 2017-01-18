@@ -9,9 +9,17 @@
     <td>{{ book.price }}</td>
 
     <td>
-        <button class="btn btn-sm btn-warning js-update-book" type="button"
-                data-url="{{ book.get_absolute_url }}">
+        <button class="btn btn-sm btn-warning js-book-update" type="button"
+                data-url="{%  url 'book_update' book.id %}">
             <span class="glyphicon glyphicon-pencil"></span>
+            Edit
+        </button>
+    </td>
+
+    <td>
+        <button class="btn btn-sm btn-danger js-book-delete" type="button"
+                data-url="{%  url 'book_delete' book.id %}">
+            <span class="glyphicon glyphicon-trash"></span>
             Edit
         </button>
     </td>
@@ -20,5 +28,4 @@
 <tr>
     <td colspan="7" class="text-center bg-warning "> No Books</td>
 </tr>
-
 {% endfor %}

@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^books/$', views_core.book_list, name='book_list'),
     url(r'^books/create/$', views_core.book_create, name='book_create'),
     url(r'^books/update/(?P<pk>\d+)/$', views_core.book_update, name='book_update'),
+    url(r'^books/delete/(?P<pk>\d+)/$', views_core.book_delete, name='book_delete'),
 
 
 

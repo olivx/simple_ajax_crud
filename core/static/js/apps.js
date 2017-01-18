@@ -44,8 +44,10 @@ $(function (){
     $('#modal-book').on('submit','.js-book-create-form' ,saveForm);
 
 //  update book
-    $('.js-update-book').click(loadForm);
+    $('#book-table').on('click' , '.js-book-update' , loadForm);
     $('#modal-book').on('submit', '.js-book-update-form', saveForm);
 
-
+//  delete book
+    $('#book-table').on('click', '.js-book-delete', loadForm);
+    $('#modal-book').on('submit','.js-book-delete-form' , saveForm)
 });

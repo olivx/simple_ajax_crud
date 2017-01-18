@@ -1,5 +1,5 @@
 
-<form action="{% url 'book_update' %}" method="POST" class="js-book-update-form">
+<form action="{% url 'book_update' form.instance.pk %}" method="POST" class="js-book-update-form">
 
     {% csrf_token %}
 
@@ -20,6 +20,6 @@
 
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" > Update Book </button>
+        <button type="submit" class="btn btn-warning" > Update Book </button>
     </div><!-- footer -->
 </form>

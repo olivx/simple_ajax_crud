@@ -40,7 +40,6 @@ def book_create(request):
 
 
 def book_update(request, pk):
-
     book = get_object_or_404(Books, pk=pk)
 
     if request.method == 'POST':
@@ -49,3 +48,20 @@ def book_update(request, pk):
         form = BookForms(instance=book)
 
     return book_create_form(request, form, 'includes/partial_book_update.html')
+
+
+def book_delete(request, pk):
+    data = {}
+    book = get_object_or_404(Books, pk=pk)
+
+    if request.method == 'POST':
+        book.delete()
+        books = Books.objects.all()
+        data['is_form_valid'] = True
+        data['html_book_list'] = render_to_string('includes/partial_book_list.html', {'book_list': books})
+    else:
+        data['is_form_valid'] = False
+        context = {'book': book}
+        data['html_form'] = render_to_string('includes/partial_book_delete.html', context, request=request)
+
+    return JsonResponse(data)
