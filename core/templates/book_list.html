@@ -1,0 +1,49 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<h1 class="page-header"> Books </h1>
+
+<!-- button triger function -->
+<p>
+    <button type="button" class="btn btn-primary js-create-book" data-url="{% url 'book_create' %}" >
+        <span class="glyphicon glyphicon-plus "></span>
+        New Book
+    </button>
+</p>
+
+<!-- table -->
+<table class="table table-striped" id="book-table">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>Title</td>
+            <td>Author</td>
+            <td>Type</td>
+            <td>Publication date</td>
+            <td>Page</td>
+            <td>Price</td>
+
+        </tr>
+    </thead>
+
+    <tbody>
+
+        {% include 'includes/partial_book_list.html' %}
+
+    </tbody>
+
+
+</table>
+
+
+<!-- modal -->
+<div class="modal fade" id="modal-book">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+
+        </div>
+    </div>
+</div>
+{% endblock %}

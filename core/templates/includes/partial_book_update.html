@@ -1,0 +1,25 @@
+
+<form action="{% url 'book_update' %}" method="POST" class="js-book-update-form">
+
+    {% csrf_token %}
+
+    <div class="modal-header">
+        <button class="close" aria-label="Close" data-dismiss="modal" type="button">
+            <span aria-hidden="True">&times;</span>
+        </button>
+
+        <h4 class="modal-title"> Update book </h4>
+
+    </div> <!-- header -->
+
+    <div class="modal-body">
+
+        {% include 'includes/partial_book_form.html' %}
+
+    </div><!-- body -->
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" > Update Book </button>
+    </div><!-- footer -->
+</form>
