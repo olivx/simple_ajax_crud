@@ -1,9 +1,6 @@
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
-
-# Create your views here.
 from django.template.loader import render_to_string
-
 from core.models import Books
 from core.forms import BookForms
 
@@ -19,13 +16,15 @@ def book_create_form(request, form, template_name):
         if form.is_valid():
             form.save()
             books = Books.objects.all()
-            data['html_book_list'] = render_to_string('includes/partial_book_list.html', {'book_list': books})
+            data['html_book_list'] = render_to_string(
+                'includes/partial_book_list.html', {'book_list': books})
             data['is_form_valid'] = True
         else:
             data['is_form_valid'] = False
 
     context = {'form': form}
-    data['html_form'] = render_to_string(template_name, context, request=request)
+    data['html_form'] = render_to_string(
+        template_name, context, request=request)
 
     return JsonResponse(data)
 
@@ -58,10 +57,12 @@ def book_delete(request, pk):
         book.delete()
         books = Books.objects.all()
         data['is_form_valid'] = True
-        data['html_book_list'] = render_to_string('includes/partial_book_list.html', {'book_list': books})
+        data['html_book_list'] = render_to_string(
+            'includes/partial_book_list.html', {'book_list': books})
     else:
         data['is_form_valid'] = False
         context = {'book': book}
-        data['html_form'] = render_to_string('includes/partial_book_delete.html', context, request=request)
+        data['html_form'] = render_to_string(
+            'includes/partial_book_delete.html', context, request=request)
 
     return JsonResponse(data)

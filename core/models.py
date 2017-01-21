@@ -1,7 +1,6 @@
 from django.db import models
 from django.shortcuts import resolve_url as r
 
-# Create your models here.
 
 class Books(models.Model):
     HARDCOVER = 1
@@ -20,8 +19,13 @@ class Books(models.Model):
     price = models.DecimalField(decimal_places=2, max_digits=5)
     book_type = models.PositiveSmallIntegerField(choices=BOOK_TYPES)
 
+    class Meta:
+        ordering = ('title',)
+        verbose_name = 'livro'
+        verbose_name_plural = 'livros'
+
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
-        return  r('book_update', pk=self.pk)
+        return r('book_update', pk=self.pk)
